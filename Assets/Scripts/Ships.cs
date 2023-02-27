@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ships : MonoBehaviour
 {
     [SerializeField] float speedAdjustment;
+    public int shipCount;
     // Start is called before the first frame update
     void Start()
     {

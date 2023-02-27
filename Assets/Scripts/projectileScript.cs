@@ -5,11 +5,13 @@ using UnityEngine;
 public class projectileScript : MonoBehaviour
 {
     [SerializeField] float projSpeed;
-
+    private PointManager pointManager;
+    private ShipTracker shipCounter;
     // Start is called before the first frame update
     void Start()
     {
-        
+        pointManager = GameObject.Find("PointManager").GetComponent<PointManager>();
+        shipCounter = GameObject.Find("ShipCounter").GetComponent<ShipTracker>();
     }
 
     // Update is called once per frame
@@ -23,9 +25,15 @@ public class projectileScript : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Destroy(collision.gameObject);
+            pointManager.UpdateScore(100);
+            shipCounter.UpdateShips(1);
             Destroy(gameObject);
         }
         if (collision.gameObject.tag == "BoundaryBox")
+        {
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "Barrier")
         {
             Destroy(gameObject);
         }
