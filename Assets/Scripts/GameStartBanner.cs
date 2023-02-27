@@ -16,11 +16,11 @@ public class GameStartBanner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (timeToStartGame >= 0)
         timeToStartGame -= Time.fixedDeltaTime;
         if (timeToStartGame <= 0)
         {
             StartGame();
-            timeToStartGame = 0;
         }
     }
     public void StartGame()

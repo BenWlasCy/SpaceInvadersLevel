@@ -9,6 +9,8 @@ public class ShipTracker : MonoBehaviour
     [SerializeField] int shipCount;
     [SerializeField] TMP_Text shipText;
     [SerializeField] int sceneToLoad;
+    [SerializeField] GameObject levelTwoPanel;
+    private float victoryScreenTimer = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,13 @@ public class ShipTracker : MonoBehaviour
     {
         if(shipCount <= 0)
         {
-            SceneManager.LoadScene(sceneToLoad);
+            levelTwoPanel.SetActive(true);
+            victoryScreenTimer -= Time.deltaTime;
+            if (victoryScreenTimer <= 0)
+            {
+                levelTwoPanel.SetActive(false);
+                SceneManager.LoadScene(sceneToLoad);
+            }
         }
     }
     public void UpdateShips(int ships)
