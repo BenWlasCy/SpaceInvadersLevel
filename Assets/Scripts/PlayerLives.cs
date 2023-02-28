@@ -8,6 +8,7 @@ public class PlayerLives : MonoBehaviour
 
     [SerializeField] int lives = 3;
     [SerializeField] Image[] livesUI;
+    [SerializeField] GameObject gameOverPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +42,7 @@ public class PlayerLives : MonoBehaviour
             if(lives <= 0 )
             {
                 Destroy(gameObject);
+                gameOverPanel.SetActive(true);
             }
         }
     }
@@ -65,6 +67,7 @@ public class PlayerLives : MonoBehaviour
             if (lives <= 0)
             {
                 Destroy(gameObject);
+                gameOverPanel.SetActive(true);
             }
         }
     }

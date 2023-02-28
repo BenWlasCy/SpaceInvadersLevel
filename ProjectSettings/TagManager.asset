@@ -9,6 +9,8 @@ TagManager:
   - Enemy Projectile
   - Barrier
   - Player Projectile
+  - Boss
+  - BossEnemy
   layers:
   - Default
   - TransparentFX

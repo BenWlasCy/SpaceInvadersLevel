@@ -7,11 +7,13 @@ public class projectileScript : MonoBehaviour
     [SerializeField] float projSpeed;
     private PointManager pointManager;
     private ShipTracker shipCounter;
+    private BossBehaviour bossBehaviour;
     // Start is called before the first frame update
     void Start()
     {
         pointManager = GameObject.Find("PointManager").GetComponent<PointManager>();
         shipCounter = GameObject.Find("ShipCounter").GetComponent<ShipTracker>();
+        bossBehaviour = GameObject.Find("BossEnemy").GetComponent<BossBehaviour>();
     }
 
     // Update is called once per frame
@@ -35,6 +37,12 @@ public class projectileScript : MonoBehaviour
         }
         if (collision.gameObject.tag == "Barrier")
         {
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "BossEnemy")
+        {
+            pointManager.UpdateScore(25);
+            bossBehaviour.UpdateHealth();
             Destroy(gameObject);
         }
     }
